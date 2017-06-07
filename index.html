@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Robots" contect="none">
+<title>邮件签名生成器</title>
+<link rel="stylesheet" href="./css/demo.css">
+<link rel="stylesheet" href="http://qidian.gtimg.com/lulu/theme/modern/css/common/ui.css">
+<link rel="stylesheet" type="text/css" href="//qidian.gtimg.com/c/=/lulu/theme/modern/css/common/lib.css,/lulu/theme/modern/css/common/animate.css,/lulu/theme/modern/css/common/color.css">
+</head>
+
+<body>
+<div class="sign-header">
+	<h1 class="sign-logo">阅文集团邮件签名</h1>
+</div>
+
+<div class="sign-content">
+  	<form id='signForm' class="sign-form">
+		<div class="sign-list">
+			<label for="myName" class="sign-label"><span class="red">*</span>姓名<span>：</span></label>
+			<div class="cell">
+				<div class="ui-input"><input name="myname" id="myName" required=""></div>
+			</div> 
+	    </div>
+		<!-- <div class="sign-list">
+			<label for="department" class="sign-label"><span class="red">*</span>部门：</label>
+			<div class="cell">
+				<div class="ui-input"><input name="department" id="department" required="" value="用户体验设计部" readonly=""></div>
+			</div> 
+		</div> -->
+		<div class="sign-list">
+			<label for="job" class="sign-label"><span class="red">*</span>职务<span>：</span></label>
+			<div class="cell">
+				<div class="ui-input"><input name="job" id="job" required=""></div>
+			</div> 
+		</div>
+		<div class="sign-list">
+			<label for="tel" class="sign-label"><span class="red">*</span>手机<span>：</span></label>
+			<div class="cell">
+				<div class="ui-input"><input type="tel" name="tel" id="tel" required=""></div>
+			</div> 
+		</div>
+		<div class="sign-list">
+			<label for="phonePart3" class="sign-label"><span class="red">*</span>固定电话<span>：</span></label>
+			<div class="cell">
+				<span class="l mr5">
+					<input class="ui-input" size="6" name="phonePart1" value="021" pattern="\d{3,4}" required=""> -
+					<input class="ui-input" size="12" name="phonePart2" value="61870500" pattern="\d{7,8}" required=""> -
+				</span>
+				<div class="cell">
+					<div class="ui-input">
+						<input id="phonePart3" size="8" name="phonePart3" pattern="\d{4,6}" required="">
+					</div>
+				</div>
+			</div> 
+		</div>
+	    <div class="sign-list">
+	   	  	<span class="sign-label"><span class="red">*</span>工作地点<span>：</span></span>
+	        <div id="cityRadioX" class="cell">
+				<input name="city" type="radio" id="city_0" value="0" checked data-address="上海市浦东新区碧波路690号6号楼3层（201203）" required="">
+				<label for="city_0" class="ui-radio"></label><label for="city_0" class="mr20 ml5">上海</label>
+				<input type="radio" name="city" value="1" id="city_1" data-address="北京市海淀区中关村软件园1期40号楼5层（100084）" required="">
+				<label for="city_1" class="ui-radio"></label><label for="city_1" class="mr20 ml5">北京</label>
+			    <input type="radio" name="city" value="2" id="city_2" required="">
+			    <label for="city_2" class="ui-radio"></label><label for="city_2" class="ml5">其它</label>
+			    <label for="address" class="dn">工作地点</label>
+			    <div class="ui-input mt10"><input name="address" id="address" required="" value="上海市浦东新区碧波路690号6号楼3层（201203）"></div>
+	        </div>
+	    </div>
+		<div class="sign-list">
+			<span class="sign-label"><span class="red">*</span>个性图片<span>：</span></span>
+			<div class="cell">
+				<p><input id="imgSystem" type="radio" name="radioImg" value="0" checked><label class="ui-radio" for="imgSystem"></label><label class="ml5" for="imgSystem">使用系统图片</label></p>
+				<div id="imgRadioX" class="sign-img-system">
+					<label for="imgSystem1" class="sign-img-label"><input id="imgSystem1" type="radio" name="imgUrl" value="https://qidian.gtimg.com/yux/sign/images/pic_default_1.png" checked><img src="https://qidian.gtimg.com/yux/sign/images/pic_default_1.png" class="sign-img"></label>
+					<label for="imgSystem2" class="sign-img-label"><input id="imgSystem2" type="radio" name="imgUrl" value="https://qidian.gtimg.com/yux/sign/images/pic_default_2.png"><img src="https://qidian.gtimg.com/yux/sign/images/pic_default_2.png" class="sign-img"></label>
+					<label for="imgSystem3" class="sign-img-label"><input id="imgSystem3" type="radio" name="imgUrl" value="https://qidian.gtimg.com/yux/sign/images/pic_default_3.png"><img src="https://qidian.gtimg.com/yux/sign/images/pic_default_3.png" class="sign-img"></label>
+					<label for="imgSystem4" class="sign-img-label"><input id="imgSystem4" type="radio" name="imgUrl" value="https://qidian.gtimg.com/yux/sign/images/pic_default_4.png"><img src="https://qidian.gtimg.com/yux/sign/images/pic_default_4.png" class="sign-img"></label>
+				</div>
+				<p class="mt10"><input id="imgCustom" name="radioImg" value="1" type="radio"><label class="ui-radio" for="imgCustom"></label><label class="ml5" for="imgCustom">使用自定义图片</label></p>
+				<div id="imgCustomX" class="sign-img-custom" style="display: none;">
+					<img id="imgCover" src="./images/pic_default_cover.png" width="180" height="180" class="dn">
+					<input type="file" id="uploadFile" disabled class="clip" accept="image/png, image/jpeg, image/gif, image/jpg">
+					<label class="ui-button" for="uploadFile">选择图片</label>
+					<p class="gray mt10 f12">建议尺寸：180px*180px，少部分邮箱可能无法显示</p>
+					<input type="hidden" id="imgUploadUrl" name="imgUrl" disabled>
+					<div id="imgUploadX" class="sign-upload-img"></div>
+				</div>
+			</div> 
+		</div>
+		<input type="submit" hidden="">
+    </form>
+	
+	<script id="tplSign" type="text/template">
+		<table width="100%" style="font-family:Helvetica,'PingFang SC','Source Han Sans CN','WenQuanYi Micro Hei','Microsoft YaHei',sans-serif;max-width:520px;line-height:1.5;border:1px solid #ECECEC;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td style="padding-left:8px; vertical-align:middle;">
+					<div style="font-family:'FZYaSong-DB1-GBK','FZYaSongS-B-GB'; line-height:1.5;"><span style="font-size:16px;color:#000;">$myname$</span><span style="color:#4b4b4b;font-size:11px;">&nbsp;$job$</span></div>
+					<div style="width:80px;border-top:1px solid #ddd;margin:2px 0;"></div>
+					<div style="color:#4b4b4b;font-size:10px; line-height:1.5;">
+						<img src="https://qidian.gtimg.com/yux/sign/images/M_2x.png" style="vertical-align:-1px;" width="12" height="9" align="absmiddle">&nbsp;$tel$&emsp;&emsp;&emsp;<img src="https://qidian.gtimg.com/yux/sign/images/P_2x.png" height="9" width="9" style="vertical-align:-1px;">&nbsp;$phonePart1$-$phonePart2$-$phonePart3$
+					</div>
+					<div style="color:#4b4b4b;font-size:10px; line-height:1.5;">
+						<img src="https://qidian.gtimg.com/yux/sign/images/A_2x.png" style="margin-left:1px;vertical-align:-1px;" width="10" height="9" align="absmiddle">&nbsp;$address$
+					</div>
+					<div style="color:#4b4b4b;font-size:10px; line-height:1.5;">
+						<img src="https://qidian.gtimg.com/yux/sign/images/W_2x.png"width="12" height="9" align="absmiddle">&nbsp;www.yuewen.com
+					</div>
+				</td>
+				<td width="90" style="vertical-align:middle;">
+					<img src="$imgUrl$" width="90" height="90" alt="阅文集团YUX用户体验设计中心" align="absbottom">
+				</td>
+			</tr>
+		</table>
+	</script>
+
+	<div class="sign-preview">
+		<h3>实时效果预览</h3>
+		<div id="signPreview" class="mt10">
+			
+		</div>
+	</div>
+
+	<div class="sign-preview">
+		<h3 class="mb10">对应的源代码</h3>
+		<div class="ui-textarea">
+			<textarea id="areaCode" rows="8" disabled></textarea>
+		</div>
+		<p class="mt10">
+			<input id="btnCopy" type="button" class="ui-button ui-button-primary" value="复制代码" disabled data-clipboard-target="#areaCode">
+		</p>
+	</div>
+	
+	<div class="sign-help pt10">
+		<h3 class="mb10 mt30">设置教程</h3>
+		<ul>
+			<li><a href="help1.png" class="blue" target="_blank">邮件签名档-网页版默认样式设置</a></li>
+			<li><a href="help2.png" class="blue" target="_blank">邮件签名档-网页版自定义样式设置</a></li>
+			<li><a href="help3.png" class="blue" target="_blank">邮件签名档-Foxmail客户端设置</a></li>
+		</ul>
+	</div>
+
+	<div class="sign-help">
+		<h3 class="mb10 mt30">老的设置教程</h3>
+		<ul>
+			<li><a href="./help1.html" class="blue" target="_blank">Win版Foxmail设置教程</a></li>
+			<li><a href="./help2.html" class="blue" target="_blank">Win版Outlook设置教程
+</a></li>
+			<li><a href="./help3.html" class="blue" target="_blank">腾讯企业邮箱如何设置</a></li>
+			<li><a href="./help4.html" class="blue" target="_blank"> Mac版Foxmail设置</a></li>
+		</ul>
+	</div>
+</div>
+
+<script src="https://qidian.gtimg.com/yuewen/v1/js/jquery.min.js"></script>
+<script type="text/javascript" src="//qidian.gtimg.com/c/=/lulu/theme/modern/js/common/ui/Follow.js,/lulu/theme/modern/js/common/ui/ErrorTip.js,/lulu/theme/modern/js/common/ui/Loading.js,/lulu/theme/modern/js/common/ui/Validate.js,/lulu/theme/modern/js/common/ui/LightTip.js,/lulu/theme/modern/js/common/ui/Datalist.js,/lulu/theme/modern/js/common/ui/Dialog.js"></script>
+<script src="./js/clipboard.min.js"></script>
+<script>
+(function () {
+	// 极简模板
+	$.template = function(str, obj) {
+	    return str.replace(/\$\w+\$/gi, function(matchs) {
+	        return obj[matchs.replace(/\$/g, "")] || "?";
+	    });
+	};
+
+	var DISABLED = 'disabled';
+
+	// 一些元素
+	var elForm = $('#signForm');
+	var elPreview = $('#signPreview');
+	var elTpl = $('#tplSign');
+	var elCode = $('#areaCode');
+	var elBtnCopy = $('#btnCopy');
+
+	// 表单验证
+	var signValidate = new Validate(elForm, function () {}, {
+		label: true
+	});
+
+	// 实时渲染
+	var render = function (event) {
+		var serializeArray = elForm.serializeArray();
+		var data = {};
+
+		$.each(serializeArray, function (index, obj) {
+			data[obj.name] = obj.value;
+		});
+
+		var code = $.template(elTpl.html(), data);
+		var codeMini = $.trim(code).replace(/\r|\n/g,'').replace(/\s+/g,' ').replace(/>\s/g, '>');
+		elPreview.html(codeMini);
+		elCode.val(codeMini);
+
+		// 是否验证通过
+		if (event) {
+			if (elForm.find('.error').length == 0) {
+				elCode.removeClass('error').removeAttr(DISABLED);
+				elBtnCopy.removeAttr(DISABLED);
+			}
+		} else  if (!signValidate.isAllPass()) {
+			elCode.addClass('error').attr(DISABLED, DISABLED);
+			elBtnCopy.attr(DISABLED, DISABLED);	
+		}
+	};
+
+	// 事件支持
+	elForm.on({
+		input: function (event) {
+			// 实时渲染
+			render(event);
+			// 本地存储
+			localStorage.signFormData = elForm.serialize();
+		}
+	});
+
+	// 职务的数据列表
+	new Datalist($('#job'), {
+	    data: ['视觉设计', '交互设计', '前端开发', '用户研究'],
+	    filter: function(data, value) {
+	    	var arr = [];
+	        $.each(data, function(index, job) {
+	        	if (job.indexOf(value) !== -1) {
+	        		arr.push({
+		                value: job
+		            });
+	        	}
+	        });
+	        return arr;
+	    }
+	});
+
+	// 工作地点切换
+	var elAddress = $('#address');
+	$('#cityRadioX input[type="radio"]').on('click', function (event) {
+		var address = $(this).attr('data-address') || '';
+		elAddress.val(address);
+
+		// 触发对应事件，JS触发的不走本地存储
+		if (event.isTrigger) {
+			render(event);
+		} else {
+			elForm.trigger('input');
+		}
+	});
+	
+	// 系统图片切换
+	$('#imgRadioX input[type="radio"]').on('click', function (event) {
+		// 触发对应事件
+		if (event.isTrigger) {
+			render(event);
+		} else {
+			elForm.trigger('input');
+		}
+	});
+
+	// 自定义图片和系统图片切换
+	var elRadioSystem = $('#imgSystem');
+	var elRadioCustom = $('#imgCustom');
+
+	var elSystemX = $('#imgRadioX');
+	var elCustomX = $('#imgCustomX');
+
+	elRadioSystem.on('click', function () {
+		elCustomX.hide().find('input').attr(DISABLED, DISABLED);
+		elSystemX.show().find('input').removeAttr(DISABLED);
+	});
+	elRadioCustom.on('click', function () {
+		elSystemX.hide().find('input').attr(DISABLED, DISABLED);
+		elCustomX.show().find('input').removeAttr(DISABLED);
+	});
+
+	// 文件上传
+	var elUploadFile = $('#uploadFile');
+	var elUploadImgX = $('#imgUploadX');
+	var elUploadUrl = $('#imgUploadUrl');
+
+	elUploadFile.on('change', function (event) {
+		var reader = new FileReader();
+		var file = event.target.files[0] || event.dataTransfer.files[0];
+	    reader.onload = function(e) {
+	      var base64 = e.target.result;
+	      if (base64.length > 1024 * 50) {
+	      	new Dialog().alert('图片尺寸请小于50K', {
+	      		type: 'warning'
+	      	});
+	      	return;
+	      } else {
+	      	// 使用canvas合成图片，并base64化
+	      	imgTogether(base64, function (url) {
+	      		// 预览和变化
+		      	elUploadImgX.html('<img src="'+ url +'" width="90" height="90">');
+		      	elUploadUrl.val(url);
+		      	elForm.trigger('input');
+	      	});
+	      }
+	    };
+	    reader.readAsDataURL(file);
+	});
+
+	var eleImgCover = document.getElementById('imgCover');
+	// canvas图片合成
+	var imgTogether = function (url, callback) {
+		var canvas = document.createElement('canvas');
+		var size = 180;
+		canvas.width = size;
+		canvas.height = size;
+
+		var context = canvas.getContext('2d');
+
+		// 这是上传图像
+		var imgUpload = new Image();
+		imgUpload.onload = function () {
+			// 绘制
+			context.drawImage(imgUpload, 0, 0, size, size, 0,0, size, size);
+			// 再次绘制
+			context.drawImage(eleImgCover, 0, 0, size, size, 0,0, size, size);
+
+			callback(canvas.toDataURL('image/png'));
+		};
+		imgUpload.src = url;
+	};
+
+	// 复制代码
+	new Clipboard('#btnCopy');
+
+	$('#btnCopy').on('click', function () {
+		$.lightTip.success('复制成功');
+	});
+
+
+	// 从本地存储获得数据
+	var strSignStore = localStorage.signFormData;
+	if (strSignStore) {
+		var arrSignStore = strSignStore.split('&');
+		var objSignStore = {};
+		$.each(arrSignStore, function (index, keyValue) {
+			var arrKeyValue = keyValue.split('=');
+			if (arrKeyValue.length == 2) {
+				objSignStore[arrKeyValue[0]] = decodeURIComponent(arrKeyValue[1]);
+			}
+		});
+
+		elForm.find(':input').each(function () {
+			var elInput = $(this), type = this.type, name = this.name;
+			if (!name || !type) {
+				return;
+			}
+			if (type == 'radio') {
+				if (objSignStore[name] == this.value) {
+					elInput.prop('checked', true);
+					elInput.trigger('click');
+				}
+			} else if (type == 'hidden' && name == 'imgUrl') {
+				if (objSignStore.radioImg == '1') {
+					elInput.val(objSignStore.imgUrl);
+				}
+			} else {
+				elInput.val(objSignStore[name] || '');
+			}
+		});
+	}
+
+	var base64Url = elUploadUrl.val();
+	if (base64Url) {
+		elUploadImgX.html('<img src="'+ base64Url +'" width="90" height="90">');
+	}
+
+	// 渲染
+	render();
+})();
+
+</script>
+</body>
+</html>

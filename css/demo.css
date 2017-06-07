@@ -1,0 +1,111 @@
+body, p, h1, h2, h3, h4, h5, h6, ul, dl, ol, dd, form {
+	margin: 0;
+}
+ul, ol {
+	list-style: none;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, input, textarea, select {
+	font-size: 100%;
+}
+input, textarea, select {
+	font-family: inherit;
+}
+
+.sign-header { 
+	background-color: #4a4a4a;
+	height: 30px;
+	padding: 10px 30px;
+}
+.sign-logo {
+	width: 93px; height: 28px;
+	background: url(../images/w-logo.png) no-repeat center;
+	background-size: 100%;
+	font-size: 0;
+	color: transparent;
+}
+
+.sign-label {
+	width: 5.5em;
+	float: left;
+}
+label.sign-label {
+	margin-top: 10px;
+}
+
+.sign-label .red {
+	position: absolute;
+	margin-left: -1ch;
+}
+
+.sign-content {
+	width: 414px;
+	margin: 3em auto;
+}
+
+.sign-list {
+	margin: 1em 0;
+}
+
+.sign-preview {
+	margin-top: 40px;
+}
+
+.sign-img-custom {
+	margin-top: 10px;
+	margin-left: 25px;
+}
+
+:disabled + .ui-button {
+	background-color: #f5f5f5;
+	pointer-events: none;
+}
+
+.sign-img-system {
+	margin-left: 25px;
+	text-align: justify;
+	line-height: 0;
+}
+.sign-img-system:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+.sign-img {
+	width: 70px; height: 70px;
+	margin-top: 10px;
+	opacity: .5;
+}
+.sign-img-label {
+	display: inline-block;
+	font-size: 0;
+	
+	cursor: pointer;
+}
+:checked + .sign-img {
+	opacity: 1;
+}
+
+.ui-button:disabled {
+	opacity: .5;
+	pointer-events: none;
+}
+.ui-textarea > textarea:disabled {
+	background-color: #f5f5f5;
+}
+
+.sign-upload-img {
+	margin-top: 20px;
+}
+.sign-upload-img img {
+	max-width: 100%;
+}
+.sign-upload-img:empty {
+	display: none;
+}
